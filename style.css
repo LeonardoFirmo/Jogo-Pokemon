@@ -1,0 +1,221 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Silkscreen', cursive;
+}
+p{
+    font-size: 22px;
+   color: black;
+}
+.ptop{
+text-align: center;
+}
+h1{
+    
+    color: black;
+    margin-top: 50px;
+}
+body{
+   
+    height: 100vh;
+    color: white;
+}
+
+.container{
+    width: 60vw;
+    margin: 0 auto;
+
+}
+
+/* pokeballs */
+.pokeballs{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    
+}
+.pokeballs div{
+    display: flex;
+    width: 100%;  
+    justify-content: center; 
+    align-items: center; 
+    
+}
+
+#pika{
+    height: 250px;
+    width: 30vw;
+}
+
+#bulba{
+    height: 300px;
+    width: 30vw;
+
+}
+
+#char{
+    height: 250px;
+    width: 15vw;
+
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.pokemons{
+    cursor: pointer;
+}
+
+
+
+
+/* interação /bt */
+.bt{
+    background-color: white;
+    height: 77px;
+    width: 150px;
+    cursor:pointer;
+    
+}
+.jogarNovamente{
+    display: none;
+    font-size:1rem;
+    padding: 10px 20px;
+    height: 77px;
+    width: 150px;
+}
+.interacao{
+    display: flex;
+    height: 100px;
+    width: 100%;
+    align-items: center;
+    border: solid 2px white;
+}
+
+
+
+
+
+
+
+/* battle \/ */
+
+.battle{
+    display: none;
+}
+
+.mewtwo{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    
+    
+}
+.mewtwo img{
+    width:35vh;
+}
+
+
+
+.pokemonUser{
+    display: block;
+}
+
+.pokemonUser img{
+    
+    height: 30vh;
+    border-radius: 50%;
+    
+}
+
+
+
+@media (max-width:700px) {
+    .pokemons{
+        flex-direction: column;
+        margin-top: 20vh;
+    }
+    .pokemons{
+        flex-direction: column;
+        margin-top: 50vh;
+    }
+
+    
+    #pika{
+        height: 250px;
+        width: 80vw;
+    }
+
+    #bulba{
+        height: 300px;
+        width: 80vw;
+
+    }
+
+    #char{
+        height: 250px;
+        width: 55vw;
+
+    }
+    
+}
+
+
+
+@media (max-width:400px) {
+    .pokemons{
+        flex-direction: column;
+        margin-top: 50vh;
+    }
+
+    
+    #pika{
+        height: 250px;
+        width: 80vw;
+    }
+
+    #bulba{
+        height: 300px;
+        width: 80vw;
+
+    }
+
+    #char{
+        height: 250px;
+        width: 55vw;
+
+    }
+
+    .interacao{
+        
+        width: 100%;
+        height: 30vh;
+        flex-direction: column;
+    }
+    
+    .pbottom{
+        font-size: 15px;
+    } 
+   
+
+
+    .mewtwo img{
+        width:25vh;
+    }
+
+    .pokemonUser img{
+    
+        height: 20vh;
+        border-radius: 50%;
+        
+    }
+}
