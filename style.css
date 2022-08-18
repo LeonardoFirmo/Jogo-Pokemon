@@ -122,6 +122,7 @@ a{
 }
 .mewtwo img{
     width:35vh;
+    
 }
 
 
@@ -136,6 +137,48 @@ a{
     border-radius: 50%;
     
 }
+
+
+
+/* teste animacao  bulba atacando*/
+
+/* .mewtwo img{
+    position: relative;
+} 
+.pokemonUser img{
+    position: absolute;
+    top: 15vh;
+    right:25vw;
+}
+.interacao{
+    margin-top: 20vh;
+} 
+ */
+
+
+
+
+
+
+/* teste animacao mew atacando */
+
+/* .pokemonUser img{
+    position: relative;
+    
+    
+}
+
+
+.mewtwo img{
+        position: absolute;
+        bottom: 30vh;
+        left:30vw ;
+} 
+.containerPokemonUser{
+        margin-top: 40vh;
+}  */
+
+
 
 
 

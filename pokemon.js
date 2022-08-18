@@ -1,5 +1,11 @@
 let pokemonUser, jogador_a
 let audio = document.getElementById('music')
+let introMusic = new Audio ('./assets/audio/introPKM.mp3')
+let battleMusic = new Audio ('./assets/audio/battle.mp3')
+let efeitoAtk = new Audio ('./assets/audio/ataquePKM2.mp3')
+let efeitoAtk2 = new Audio ('./assets/audio/laserPKM.mp3')
+let efeitoCura = new Audio ('./assets/audio/curaPKM.mp3')
+
 let h3 = document.querySelector('h3')
 let h4 = document.querySelector('h4')
 let narracao = document.querySelector('h1')
@@ -17,6 +23,11 @@ let hpPokeUser = document.querySelector('#hpPokeUser')
 let btAtaque = document.querySelector('.ataque')
 let btCura = document.querySelector('.cura')
 
+let containerinteracao = document.querySelector('.interacao')
+let containerPokemonUser = document.querySelector('.containerPokemonUser')
+
+
+
 
 
 
@@ -24,7 +35,9 @@ let btCura = document.querySelector('.cura')
 
 window.onload = function inicio(){
 
-    
+    // inserindo musica tema 
+    introMusic.play()
+
     narracao.innerHTML = "Bem vindo ao mundo Pokemon"
 
     function pegaIDpokemonUser(){
@@ -108,6 +121,10 @@ window.onload = function inicio(){
         sectionBattle.style.display ='block'
         pbottom.style.color='white'
          
+        // mudando musica
+        introMusic.pause()
+        battleMusic.play()
+
         pbottom.innerHTML = `O pokemon escolhido foi: ${pokemonUser.nome}`
         narracao.innerHTML = ``
         setTimeout(()=>{
@@ -166,27 +183,54 @@ window.onload = function inicio(){
         let kura = false
         
 
+        function mostraBts(){
+           
+
+
+           
+         // caso o jogador tenha vida, retorna os botoes de ataque e cura
+            if(pokemonUser.vida > 0){
+
+                setTimeout(() => {
+                            btAtaque.style.display='block'
+                            btCura.style.display='block'
+                }, 2000);
+                
+             
+
+
+            }
+
+        }
+
 
 
         //   botoes ataque defEvento   
         // CURA  
         btCura.addEventListener('click',()=>{
            kura = true
-           
+            
+
+            // tira botão de ataque e cura apos escolher um ou outro
+            btAtaque.style.display='none'
+            btCura.style.display='none'
+
+
+
             // verificação do player atual
       
             if(pokemonUser.vida > 0 && mew.vida > 0){
               // vez do jogador
-                
-  
+            
                 
                     if(kura == true){
                      atak = false
                      let curaRecebida = cura(pokemonUser)
                      pokemonUser.vida= curaRecebida
                      hpPokeUser.innerHTML=`HP:${pokemonUser.vida}`
+
                      
-                     
+                     efeitoCura.play()
 
 
                      pbottom.innerHTML= `Seu pokemon se curou nessa rodada` 
@@ -194,7 +238,7 @@ window.onload = function inicio(){
                     setTimeout(()=>{
                        
                         vezDoMew()
-                    },1200)
+                    },2200)
 
                 }
 
@@ -206,20 +250,69 @@ window.onload = function inicio(){
        
 
 
+
+
+
         // bt ataque
         btAtaque.addEventListener('click',()=>{
             atak = true
             
+            // tira botão de ataque e cura apos escolher um ou outro
+            btAtaque.style.display='none'
+            btCura.style.display='none'
+
+            
+     
+
             if(pokemonUser.vida > 0){
+
+                //  tira os botoes para jogar só 1 vez por rodada
+                
+
+                
+
+
+
                 if(atak == true){
                     kura = false
                     
-
+                    // ataque do user
                     let danoRecebido = ataque(pokemonUser)
                     mew.vida=  mew.vida - danoRecebido 
-                  
-                     
 
+                    // som do ataque
+                    efeitoAtk.play()
+                    
+                    // animacao pokemon user bate
+                      // animacao mew batendo
+            
+                // pokeIMG.style.opacity='0'
+
+                function animacaoJogadorBate(){
+                    mewIMG.style.position='relative'
+                    pokeIMG.style.position='absolute'
+                    pokeIMG.style.top='15vh'
+                    pokeIMG.style.right='25vw'
+                    containerinteracao.style.marginTop='30vh'
+
+                    setTimeout(() => {
+
+                        mewIMG.style.position=''
+                        pokeIMG.style.position=''
+                        pokeIMG.style.top=''
+                        pokeIMG.style.right=''
+                        containerinteracao.style.marginTop='0'
+                        
+                    }, 1000);
+
+
+                }
+
+                animacaoJogadorBate()
+
+                   
+                     
+                    // narraçao
                     pbottom.innerHTML= `Você atacou o MewTwo Dano de ${danoRecebido}<br>`
                     hpMew.innerHTML=`HP:${mew.vida}`
 
@@ -252,7 +345,11 @@ window.onload = function inicio(){
                     
                         },1500)
 
+
                        
+
+
+                            
 
                          
                         
@@ -288,7 +385,41 @@ window.onload = function inicio(){
             pokemonUser.vida=  pokemonUser.vida - danoRecebido
             hpPokeUser.innerHTML=`HP:${pokemonUser.vida}`
             pbottom.innerHTML= `MewTwo atacou você com dano de ${danoRecebido}<br> ${jogador_a} o que seu ${pokemonUser.nome} deve fazer?<br>`
+            
+            // som do golpe do mew
+            efeitoAtk2.play()
+
           
+
+
+            function animacaoMewBate(){
+                pokeIMG.style.position='relative'
+                mewIMG.style.position='absolute'
+                mewIMG.style.bottom='30vh'
+                mewIMG.style.left='30vw'
+                containerPokemonUser.style.marginTop='43vh'
+                
+                // volta mew a postion original
+                setTimeout(() => {
+                    pokeIMG.style.position=''
+                    mewIMG.style.position=''
+                    mewIMG.style.bottom=''
+                    mewIMG.style.left=''
+                    containerPokemonUser.style.marginTop=''
+                    
+                }, 1000);
+            }
+
+            animacaoMewBate()
+
+            
+
+
+            // mostra botoes atk def
+            mostraBts()
+
+
+            // caso vida do usuario menor que zero \/
 
             if(pokemonUser.vida <= 0){
                 pokemonUser.vida = 0
@@ -301,6 +432,12 @@ window.onload = function inicio(){
                 btCura.style.display='none'
                 jogarNovamente.style.display='flex'
                 
+
+                setTimeout(()=>{
+                    pbottom.style.opacity='0'
+                   
+            
+                },5000)
              
                 
             }
