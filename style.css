@@ -94,8 +94,10 @@ a{
 }
 .interacao{
     display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 10vw;
     height: 100px;
-    width: 100%;
     align-items: center;
     border: solid 2px white;
 }
@@ -179,10 +181,24 @@ a{
 }  */
 
 
+@media (max-width:1024px) {
+    .bt{
+        background-color: white;
+        height: 50px;
+        width: 90px;
+        cursor:pointer;
+        
+    }
+}
+
+@media (max-width:800px) {
+    .pbottom{
+        font-size: 1rem;
+    }
+}
 
 
-
-@media (max-width:700px) {
+@media (max-width:720px) {
     .pokemons{
         flex-direction: column;
         margin-top: 20vh;
@@ -209,6 +225,16 @@ a{
         width: 55vw;
 
     }
+
+    .interacao{
+        width: 100%;
+        flex-direction: column;
+        height: 30vh;
+        bottom: 0;
+        left: 0vw;
+        background-color: black;
+    }
+ 
     
 }
 
@@ -238,12 +264,7 @@ a{
 
     }
 
-    .interacao{
-        
-        width: 100%;
-        height: 30vh;
-        flex-direction: column;
-    }
+ 
     
     .pbottom{
         font-size: 15px;
@@ -261,4 +282,41 @@ a{
         border-radius: 50%;
         
     }
+
+
+    .bt{
+        background-color: white;
+        height: 30px;
+        width: 90px;
+        cursor:pointer;
+        
+    }
+
+    .jogarNovamente{
+       
+        font-size:1rem;
+        padding: 10px 20px;
+        height: 77px;
+        width: 150px;
+    }
+
+    
+
+
+    .interacao{
+        width: 100%;
+        flex-direction: column;
+        height: 30vh;
+        bottom: 0;
+        left: 0vw;
+        background-color: black;
+    }
+
+    .pokemonUser img{
+        margin-top: 5vh;
+    }
+    #hpPokeUser{
+        margin-top: 8vh;
+    }
+
 }

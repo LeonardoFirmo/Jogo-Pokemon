@@ -293,7 +293,8 @@ window.onload = function inicio(){
                     pokeIMG.style.position='absolute'
                     pokeIMG.style.top='15vh'
                     pokeIMG.style.right='25vw'
-                    containerinteracao.style.marginTop='30vh'
+                    // containerinteracao.style.marginTop='30vh'
+                    // containerinteracao.style.display='none'
 
                     setTimeout(() => {
 
@@ -301,7 +302,8 @@ window.onload = function inicio(){
                         pokeIMG.style.position=''
                         pokeIMG.style.top=''
                         pokeIMG.style.right=''
-                        containerinteracao.style.marginTop='0'
+                        // containerinteracao.style.marginTop='0'
+                        // containerinteracao.style.display='flex'
                         
                     }, 1000);
 
@@ -397,7 +399,9 @@ window.onload = function inicio(){
                 mewIMG.style.position='absolute'
                 mewIMG.style.bottom='30vh'
                 mewIMG.style.left='30vw'
-                containerPokemonUser.style.marginTop='43vh'
+                // containerPokemonUser.style.marginTop='43vh'
+                containerPokemonUser.style.marginTop='30vh'
+
                 
                 // volta mew a postion original
                 setTimeout(() => {
@@ -425,7 +429,11 @@ window.onload = function inicio(){
                 pokemonUser.vida = 0
                 pbottom.innerHTML= `MewTwo atacou você com dano de ${danoRecebido}<br>O seu ${pokemonUser.nome} foi derrotado!<br>`
                 pokeIMG.style.opacity='0'
-                hpPokeUser.innerHTML=`HP:${pokemonUser.vida}, Seu pokemon foi derrotado!`
+
+                setTimeout(() => {
+                    hpPokeUser.innerHTML=`HP:${pokemonUser.vida}, Seu pokemon foi derrotado!`
+                }, 1000);
+               
                
 
                 btAtaque.style.display='none'
