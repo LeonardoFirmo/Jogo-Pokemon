@@ -9,12 +9,20 @@
     <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
-    <h1 class="container ptop"></h1>
    
-    
+   
+    <h1 class="container ptop"></h1>
+
+    <section class="entradaNome">
+      
+      <input id="inputName" type="text">
+      <button class="bt btName">Confirmar</button>
+    </section>
+
+   
 
     <section class="pokeballs">
-      
+    
       <div class="pokemons">
         <img id="pika" src="./img/pikachuFront.gif" alt="">
         <img id="bulba" src="./img/bulbaFront.gif" alt="">
@@ -32,17 +40,27 @@
     <section class="battle">
 
       <div class="container mewtwo">
-        <img id="MewIMG" src="./img/mewtwo.gif" alt="">
+        <img id="MewIMG" src="./img/mewtwogif.gif" alt="">
+        <div id="barHpMew"></div>
         <h3 id="hpMew">HP:120</h3>
       </div>
       
     
       <div class="container containerPokemonUser">
         
-        <h4 id="hpPokeUser">HP:100</h4>
+        
+       
+
         <div class="pokemonUser">
           <img id="pokeIMG"  src="./img/pikachuGif.gif" alt="">
           
+
+
+          <div class="HP">
+            <div id="barHpUser"></div>
+            <h4 id="hpPokeUser">HP:100</h4>
+          </div>
+
           <div class="interacao">
             <p class="container pbottom"></p>
             <button class="bt ataque">Atacar</button>
@@ -65,9 +83,7 @@
 
 
     
-    <!-- <audio autoplay>
-      <source autoplay src="./assets/audio/battle.mp3" type="audio/mp3">
-    </audio> -->
+ 
    
 
    

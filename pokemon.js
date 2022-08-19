@@ -12,6 +12,8 @@ let narracao = document.querySelector('h1')
 let pokeIMG = document.getElementById('pokeIMG')
 let mewIMG = document.getElementById('MewIMG')
 let pokemonJoyce= document.querySelector('.pokemons')
+
+let sectionEntradaNome = document.querySelector('.entradaNome')
 let sectionPokeballs = document.querySelector('.pokeballs')
 let sectionBattle = document.querySelector('.battle')
 let pbottom = document.querySelector('.pbottom')
@@ -20,8 +22,17 @@ let jogarNovamente= document.querySelector('.jogarNovamente')
 let hpMew = document.querySelector('#hpMew')
 let hpPokeUser = document.querySelector('#hpPokeUser')
 
+let inputName = document.querySelector('#inputName')
+let btName = document.querySelector('.btName')
+
 let btAtaque = document.querySelector('.ataque')
 let btCura = document.querySelector('.cura')
+
+let barHpMew = document.querySelector('#barHpMew')
+
+let barHpUser = document.querySelector('#barHpUser')
+
+
 
 let containerinteracao = document.querySelector('.interacao')
 let containerPokemonUser = document.querySelector('.containerPokemonUser')
@@ -36,9 +47,44 @@ let containerPokemonUser = document.querySelector('.containerPokemonUser')
 window.onload = function inicio(){
 
     // inserindo musica tema 
-    introMusic.play()
+   
 
     narracao.innerHTML = "Bem vindo ao mundo Pokemon"
+    
+    setTimeout(() => {
+        narracao.innerHTML = "Digite seu Nome"
+    }, 1500);
+
+
+
+
+    // nome usuario
+    inputName.addEventListener('keyup',event =>{
+        let nameUser = event.target.value
+        
+        btName.addEventListener('click', ()=>{
+            jogador_a = nameUser
+            sectionEntradaNome.style.display ='none'
+            sectionPokeballs.style.display='flex'
+            introMusic.play()
+            
+                 // apresentacao user
+                setTimeout(()=>{
+                    narracao.innerHTML = `${jogador_a} Escolha seu pokemon`
+                },500)
+
+        })
+        
+
+    })
+
+ 
+    
+
+
+
+      
+    
 
     function pegaIDpokemonUser(){
 
@@ -55,17 +101,10 @@ window.onload = function inicio(){
 
 
 
-    // nome usuario
-    setTimeout(()=>{
-        jogador_a = prompt('Qual seu nome?')
-    },300)
+
     
 
-    // apresentacao user
    
-   setTimeout(()=>{
-    narracao.innerHTML = `${jogador_a} Escolha seu pokemon`
-   },500)
     
 
    
@@ -229,8 +268,18 @@ window.onload = function inicio(){
                      pokemonUser.vida= curaRecebida
                      hpPokeUser.innerHTML=`HP:${pokemonUser.vida}`
 
+                        
+                        // aplicando atualização na barra de hp do pokemonUser
+                        barHpUser.style.width= ` ${pokemonUser.vida * 2}px`
+                        barHpUser.style.borderRadius='0px'
+                        barHpUser.style.borderTopLeftRadius='5px'
+                        barHpUser.style.borderBottomLeftRadius='5px'
+                        
+                        // top-right-radius: 5px;
                      
-                     efeitoCura.play()
+
+                        //  som da cura
+                        efeitoCura.play()
 
 
                      pbottom.innerHTML= `Seu pokemon se curou nessa rodada` 
@@ -280,43 +329,59 @@ window.onload = function inicio(){
                     let danoRecebido = ataque(pokemonUser)
                     mew.vida=  mew.vida - danoRecebido 
 
+                    // aplicando atualização na barra de hp
+                    barHpMew.style.width= `${mew.vida *2}px`
+                    barHpMew.style.borderRadius='0px'
+                    barHpMew.style.borderTopRightRadius='5px'
+                    barHpMew.style.borderBottomRightRadius='5px'
+
+
                     // som do ataque
                     efeitoAtk.play()
                     
                     // animacao pokemon user bate
                       // animacao mew batendo
             
-                // pokeIMG.style.opacity='0'
 
-                function animacaoJogadorBate(){
-                    mewIMG.style.position='relative'
-                    pokeIMG.style.position='absolute'
-                    pokeIMG.style.top='15vh'
-                    pokeIMG.style.right='25vw'
-                    // containerinteracao.style.marginTop='30vh'
-                    // containerinteracao.style.display='none'
+                    function animacaoJogadorBate(){
+                      // display none no menu ao pokemonUser atacar
+                        barHpUser.style.display='none'
+                        hpPokeUser.style.display='none'
+
+                        mewIMG.style.position='relative'
+                        pokeIMG.style.position='absolute'
+                        pokeIMG.style.top='15vh'
+                        pokeIMG.style.right='30vw'
+                        pokeIMG.style.height='15vh'
+
+
+                      
 
                     setTimeout(() => {
+                         // display normal no menu ao pokemonUser atacar
+                            barHpUser.style.display=''
+                            hpPokeUser.style.display=''
 
-                        mewIMG.style.position=''
-                        pokeIMG.style.position=''
-                        pokeIMG.style.top=''
-                        pokeIMG.style.right=''
-                        // containerinteracao.style.marginTop='0'
-                        // containerinteracao.style.display='flex'
+                            // coloca o pokemon no lugar ao atacar
+                            mewIMG.style.position=''
+                            pokeIMG.style.position=''
+                            pokeIMG.style.top=''
+                            pokeIMG.style.right=''
+                            pokeIMG.style.height=''
+                            
                         
                     }, 1000);
 
 
                 }
 
-                animacaoJogadorBate()
+                    animacaoJogadorBate()
 
                    
                      
                     // narraçao
                     pbottom.innerHTML= `Você atacou o MewTwo Dano de ${danoRecebido}<br>`
-                    hpMew.innerHTML=`HP:${mew.vida}`
+                    hpMew.innerHTML=`HP:${mew.vida} / 120`
 
 
                     
@@ -330,6 +395,7 @@ window.onload = function inicio(){
                         btAtaque.style.display='none'
                         btCura.style.display='none'
                         jogarNovamente.style.display='flex'
+                        barHpMew.style.display='none'
                         
                         setTimeout(()=>{
                             pbottom.style.opacity='0'
@@ -385,31 +451,61 @@ window.onload = function inicio(){
         function vezDoMew (){
             let danoRecebido = ataque(mew)
             pokemonUser.vida=  pokemonUser.vida - danoRecebido
-            hpPokeUser.innerHTML=`HP:${pokemonUser.vida}`
+            hpPokeUser.innerHTML=`HP:${pokemonUser.vida} / 100`
             pbottom.innerHTML= `MewTwo atacou você com dano de ${danoRecebido}<br> ${jogador_a} o que seu ${pokemonUser.nome} deve fazer?<br>`
             
             // som do golpe do mew
             efeitoAtk2.play()
 
-          
 
+            // aplicando atualização na barra de hp do pokemonUser
+            barHpUser.style.width= ` ${pokemonUser.vida * 2}px`
+            barHpUser.style.borderRadius='0px'
+            barHpUser.style.borderTopLeftRadius='5px'
+            barHpUser.style.borderBottomLeftRadius='5px'
+            
+           
+
+          
+           
+         
+            
 
             function animacaoMewBate(){
+                // gif do mew batendo inserido 
+                mewIMG.src="./img/mewatkgif.gif"
+                 // display none no menu ao mew atacar
+                barHpMew.style.display='none'
+                hpMew.style.display='none'
+                // movimentação do mew
                 pokeIMG.style.position='relative'
                 mewIMG.style.position='absolute'
                 mewIMG.style.bottom='30vh'
                 mewIMG.style.left='30vw'
-                // containerPokemonUser.style.marginTop='43vh'
-                containerPokemonUser.style.marginTop='30vh'
+                containerPokemonUser.style.marginTop='43vh'
+
+                
+                // containerPokemonUser.style.marginTop='48vh'
+
+                // 
 
                 
                 // volta mew a postion original
                 setTimeout(() => {
+                     // display none no menu ao mew atacar
+                    barHpMew.style.display=''
+                    hpMew.style.display=''
+                   
+                    // volta mew ao lugar
+                    mewIMG.src="./img/mewtwogif.gif"
+
+
                     pokeIMG.style.position=''
                     mewIMG.style.position=''
                     mewIMG.style.bottom=''
                     mewIMG.style.left=''
                     containerPokemonUser.style.marginTop=''
+
                     
                 }, 1000);
             }
@@ -420,7 +516,7 @@ window.onload = function inicio(){
 
 
             // mostra botoes atk def
-            mostraBts()
+             mostraBts()
 
 
             // caso vida do usuario menor que zero \/
@@ -429,6 +525,9 @@ window.onload = function inicio(){
                 pokemonUser.vida = 0
                 pbottom.innerHTML= `MewTwo atacou você com dano de ${danoRecebido}<br>O seu ${pokemonUser.nome} foi derrotado!<br>`
                 pokeIMG.style.opacity='0'
+
+                // tira barra de vida do usuario
+                barHpUser.style.display='none'
 
                 setTimeout(() => {
                     hpPokeUser.innerHTML=`HP:${pokemonUser.vida}, Seu pokemon foi derrotado!`

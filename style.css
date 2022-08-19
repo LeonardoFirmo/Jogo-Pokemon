@@ -31,10 +31,46 @@ body{
 
 }
 
+/* entradaNome */
+
+.entradaNome{
+    height: 95vh;
+    background: linear-gradient(130.02deg, #62768e 0.66%, #1a3555 83.32%);
+    box-shadow: 26px 24px 90px rgba(31, 26, 51, 0.13);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+.entradaNome input{
+    height: 60px;
+    border-bottom: solid 8px #04080c;
+    border-right: solid 8px #04080c;
+    font-size: 1.5rem;
+}
+
+.btName{
+    height: 65px !important;
+    width: 90px !important;
+    border-top: solid 27px #E63035;
+    border-bottom: solid 14px #ffffff;
+    border-radius: 100%;
+    background-color: #000000 !important;
+    color: white;
+    
+    font-size: 0.7rem;
+  
+   
+}
+
+
+
+
 /* pokeballs */
 .pokeballs{
     height: 100vh;
-    display: flex;
+    display: none;
     align-items: center;
     
 }
@@ -73,6 +109,10 @@ a{
 .pokemons{
     cursor: pointer;
 }
+
+
+
+
 
 
 
@@ -124,8 +164,30 @@ a{
 }
 .mewtwo img{
     width:35vh;
+    margin-left: vw;
     
 }
+
+
+
+
+
+#barHpUser{
+    width: 200px;
+    height: 10px;
+    background-color: #8ED5B3;
+    border-radius: 5px;
+    border: white solid 2px;
+}
+#barHpMew{
+    width: 200px;
+    height: 10px;
+    background-color: #8ED5B3;
+    border-radius: 5px;
+    border: white solid 2px;
+}
+
+
 
 
 
@@ -142,43 +204,9 @@ a{
 
 
 
-/* teste animacao  bulba atacando*/
-
-/* .mewtwo img{
-    position: relative;
-} 
-.pokemonUser img{
-    position: absolute;
-    top: 15vh;
-    right:25vw;
-}
-.interacao{
-    margin-top: 20vh;
-} 
- */
 
 
 
-
-
-
-/* teste animacao mew atacando */
-
-/* .pokemonUser img{
-    position: relative;
-    
-    
-}
-
-
-.mewtwo img{
-        position: absolute;
-        bottom: 30vh;
-        left:30vw ;
-} 
-.containerPokemonUser{
-        margin-top: 40vh;
-}  */
 
 
 @media (max-width:1024px) {
@@ -234,6 +262,10 @@ a{
         left: 0vw;
         background-color: black;
     }
+
+    .entradaNome input{
+        width: 70vw;
+    }
  
     
 }
@@ -273,14 +305,28 @@ a{
 
 
     .mewtwo img{
-        width:25vh;
+        width:15vh;
     }
 
     .pokemonUser img{
     
-        height: 20vh;
-        border-radius: 50%;
+        height: 15vh;
         
+        
+    }
+
+   
+    #barHpMew{
+      /* width: 100px; */
+    }
+    #hpMew{
+        font-size: 12px;
+    }
+    #barHpUser{
+        /* width: 100px; */
+    }
+    #hpPokeUser{
+        font-size:12px;
     }
 
 
@@ -315,8 +361,30 @@ a{
     .pokemonUser img{
         margin-top: 5vh;
     }
-    #hpPokeUser{
-        margin-top: 8vh;
+   
+
+    .entradaNome{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .pokemonUser{
+       
+        margin-top: 20vh;
+    }
+
+
+    
+    .barHP{
+        width:100px;
+    
+
+    }
+
+    .battle{
+       height: 50vh;
+       /* background-color: red; */
     }
 
 }
