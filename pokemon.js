@@ -65,12 +65,15 @@ window.onload = function inicio(){
         btName.addEventListener('click', ()=>{
             jogador_a = nameUser
             sectionEntradaNome.style.display ='none'
+
+            // chama escolhaPokemon e musica
             sectionPokeballs.style.display='flex'
             introMusic.play()
             
                  // apresentacao user
                 setTimeout(()=>{
                     narracao.innerHTML = `${jogador_a} Escolha seu pokemon`
+                    narracao.style.backgroundColor='#E63035'
                 },500)
 
         })
@@ -80,12 +83,6 @@ window.onload = function inicio(){
 
  
     
-
-
-
-      
-    
-
     function pegaIDpokemonUser(){
 
         pokemonJoyce.addEventListener('click',e =>{
@@ -99,17 +96,6 @@ window.onload = function inicio(){
     }
     pegaIDpokemonUser()
 
-
-
-
-    
-
-   
-    
-
-   
-
-   
 
 
     // escolha seu pokemon
@@ -160,13 +146,24 @@ window.onload = function inicio(){
         sectionBattle.style.display ='block'
         pbottom.style.color='white'
          
+
+
+        
+
         // mudando musica
         introMusic.pause()
         battleMusic.play()
 
+        // inserindo fadeOut
+        // sectionBattle.style.opacity='0'
+
+
         pbottom.innerHTML = `O pokemon escolhido foi: ${pokemonUser.nome}`
         narracao.innerHTML = ``
         setTimeout(()=>{
+            // fadeInBattle
+            sectionBattle.style.opacity='1'
+
             pbottom.innerHTML= `${jogador_a} o que seu ${pokemonUser.nome} deve fazer? <br>` 
            
         },2000)
@@ -357,23 +354,23 @@ window.onload = function inicio(){
 
                       
 
-                    setTimeout(() => {
-                         // display normal no menu ao pokemonUser atacar
-                            barHpUser.style.display=''
-                            hpPokeUser.style.display=''
+                        setTimeout(() => {
+                            // display normal no menu ao pokemonUser atacar
+                                barHpUser.style.display=''
+                                hpPokeUser.style.display=''
 
-                            // coloca o pokemon no lugar ao atacar
-                            mewIMG.style.position=''
-                            pokeIMG.style.position=''
-                            pokeIMG.style.top=''
-                            pokeIMG.style.right=''
-                            pokeIMG.style.height=''
+                                // coloca o pokemon no lugar ao atacar
+                                mewIMG.style.position=''
+                                pokeIMG.style.position=''
+                                pokeIMG.style.top=''
+                                pokeIMG.style.right=''
+                                pokeIMG.style.height=''
+                                
                             
-                        
-                    }, 1000);
+                        }, 1000);
 
 
-                }
+                    }
 
                     animacaoJogadorBate()
 
@@ -389,7 +386,7 @@ window.onload = function inicio(){
                     // finaliza game caso vida do mew <=0
                     if(mew.vida <= 0){
                         mew.vida= 0
-                        mewIMG.style.opacity='0'
+                        
                         pbottom.innerHTML= `Você atacou o MewTwo Dano de ${danoRecebido}<br>` 
                         hpMew.innerHTML=`HP:${mew.vida} , Parabéns Você venceu o MewTwo!`
                         btAtaque.style.display='none'
@@ -397,6 +394,12 @@ window.onload = function inicio(){
                         jogarNovamente.style.display='flex'
                         barHpMew.style.display='none'
                         
+                        // faz sumir img do mew apos receber atk
+                        setTimeout(() => {
+                            mewIMG.style.opacity='0'
+                        }, 1000);
+
+                        // faz sumir caixa de dialogo apos partida mew ser derrotado
                         setTimeout(()=>{
                             pbottom.style.opacity='0'
                            
@@ -524,12 +527,13 @@ window.onload = function inicio(){
             if(pokemonUser.vida <= 0){
                 pokemonUser.vida = 0
                 pbottom.innerHTML= `MewTwo atacou você com dano de ${danoRecebido}<br>O seu ${pokemonUser.nome} foi derrotado!<br>`
-                pokeIMG.style.opacity='0'
+                
 
                 // tira barra de vida do usuario
                 barHpUser.style.display='none'
 
                 setTimeout(() => {
+                    pokeIMG.style.opacity='0'
                     hpPokeUser.innerHTML=`HP:${pokemonUser.vida}, Seu pokemon foi derrotado!`
                 }, 1000);
                

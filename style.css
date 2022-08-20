@@ -7,8 +7,12 @@
     box-sizing: border-box;
     font-family: 'Silkscreen', cursive;
 }
+.pbottom{
+    font-size: 1.5rem;
+}
+
 p{
-    font-size: 22px;
+   
    color: black;
 }
 .ptop{
@@ -58,22 +62,33 @@ body{
     border-radius: 100%;
     background-color: #000000 !important;
     color: white;
-    
     font-size: 0.7rem;
+    margin-left: 2vw;
   
    
 }
+
+.btName:hover{
+    margin-bottom: 3vh;
+  
+
+} 
 
 
 
 
 /* pokeballs */
 .pokeballs{
-    height: 100vh;
+    height: 90vh;
     display: none;
     align-items: center;
-    
+
+   
 }
+
+
+
+
 .pokeballs div{
     display: flex;
     width: 100%;  
@@ -90,6 +105,7 @@ body{
 #bulba{
     height: 300px;
     width: 30vw;
+    
 
 }
 
@@ -144,15 +160,24 @@ a{
 
 
 
-
-
+/* 
 
 
 /* battle \/ */
 
 .battle{
     display: none;
+    opacity: 0;
+    animation: fadeIn 5s linear;
+    animation-duration: 2.5s;
 }
+
+@keyframes fadeIn {
+    100% {opacity: 1;}
+    
+}
+
+
 
 .mewtwo{
     
@@ -217,13 +242,12 @@ a{
         cursor:pointer;
         
     }
-}
-
-@media (max-width:800px) {
     .pbottom{
         font-size: 1rem;
     }
 }
+
+
 
 
 @media (max-width:720px) {
@@ -257,10 +281,13 @@ a{
     .interacao{
         width: 100%;
         flex-direction: column;
-        height: 30vh;
+        height: 23vh;
         bottom: 0;
         left: 0vw;
         background-color: black;
+    }
+    .pbottom{
+        font-size: 0.8rem;
     }
 
     .entradaNome input{
