@@ -139,8 +139,8 @@ window.onload = function inicio(){
    
 
     function mudaParaBatalha (){
-       
-        document.body.style.background='black'
+        document.body.style.background= 'black'  
+        // document.body.style.background= 'linear-gradient(130.02deg, #62798e 0.66%, #271a55 83.32%)'  
         narracao.style.color='white'
         sectionPokeballs.style.display = 'none'
         sectionBattle.style.display ='block'
@@ -154,13 +154,13 @@ window.onload = function inicio(){
         introMusic.pause()
         battleMusic.play()
 
-        // inserindo fadeOut
-        // sectionBattle.style.opacity='0'
+       
 
 
         pbottom.innerHTML = `O pokemon escolhido foi: ${pokemonUser.nome}`
         narracao.innerHTML = ``
         setTimeout(()=>{
+
             // fadeInBattle
             sectionBattle.style.opacity='1'
 
@@ -265,6 +265,7 @@ window.onload = function inicio(){
                      pokemonUser.vida= curaRecebida
                      hpPokeUser.innerHTML=`HP:${pokemonUser.vida}`
 
+
                         
                         // aplicando atualização na barra de hp do pokemonUser
                         barHpUser.style.width= ` ${pokemonUser.vida * 2}px`
@@ -272,11 +273,29 @@ window.onload = function inicio(){
                         barHpUser.style.borderTopLeftRadius='5px'
                         barHpUser.style.borderBottomLeftRadius='5px'
                         
-                        // top-right-radius: 5px;
+                    
                      
+                            //  som da cura
+                            efeitoCura.play()
 
-                        //  som da cura
-                        efeitoCura.play()
+    
+                                 //  verifica hp do usuario para aplicar cor de perigo
+                                if(pokemonUser.vida >=26 && pokemonUser.vida <= 45){
+                                    barHpUser.style.backgroundColor='orange'
+                                    hpPokeUser.style.color='orange'
+                                }else if(pokemonUser.vida <= 25){
+                                    barHpUser.style.backgroundColor='red'
+                                    hpPokeUser.style.color='red'
+                                
+                                    
+                                
+                                }else{
+                                    hpPokeUser.style.color='green'
+                                    barHpUser.style.backgroundColor=''
+
+                                }
+
+
 
 
                      pbottom.innerHTML= `Seu pokemon se curou nessa rodada` 
@@ -333,13 +352,33 @@ window.onload = function inicio(){
                     barHpMew.style.borderBottomRightRadius='5px'
 
 
+                  
+
+
+                         //  verifica hp do usuario para aplicar cor de perigo
+                         if(mew.vida >=26 && mew.vida <= 45){
+                            barHpMew.style.backgroundColor='orange'
+                            hpMew.style.color='orange'
+                        }else if(mew.vida <= 25){
+                            barHpMew.style.backgroundColor='red'
+                            hpMew.style.color='red'
+                            
+                                
+                            
+                        }else{
+                            hpMew.style.color='green'
+                            barHpMew.style.backgroundColor=''
+
+                        }
+
+
                     // som do ataque
                     efeitoAtk.play()
                     
-                    // animacao pokemon user bate
-                      // animacao mew batendo
+                    
+                     
             
-
+                    // animacao pokemon user bate
                     function animacaoJogadorBate(){
                       // display none no menu ao pokemonUser atacar
                         barHpUser.style.display='none'
@@ -348,7 +387,7 @@ window.onload = function inicio(){
                         mewIMG.style.position='relative'
                         pokeIMG.style.position='absolute'
                         pokeIMG.style.top='15vh'
-                        pokeIMG.style.right='30vw'
+                        pokeIMG.style.right='35vw'
                         pokeIMG.style.height='15vh'
 
 
@@ -388,6 +427,7 @@ window.onload = function inicio(){
                         mew.vida= 0
                         
                         pbottom.innerHTML= `Você atacou o MewTwo Dano de ${danoRecebido}<br>` 
+                        hpMew.style.color='green'
                         hpMew.innerHTML=`HP:${mew.vida} , Parabéns Você venceu o MewTwo!`
                         btAtaque.style.display='none'
                         btCura.style.display='none'
@@ -416,23 +456,8 @@ window.onload = function inicio(){
                     
                         },1500)
 
-
-                       
-
-
-                            
-
-                         
-                        
-                        
                     }
 
-                    
-                   
-                    
-
-                   
-                    
                  
                 }
 
@@ -442,11 +467,6 @@ window.onload = function inicio(){
             }
 
 
-           
-
-         
-            
-          
         })
    
 
@@ -491,7 +511,7 @@ window.onload = function inicio(){
                 // containerPokemonUser.style.marginTop='48vh'
 
                 // 
-
+                
                 
                 // volta mew a postion original
                 setTimeout(() => {
@@ -520,9 +540,26 @@ window.onload = function inicio(){
 
             // mostra botoes atk def
              mostraBts()
+            
 
 
-            // caso vida do usuario menor que zero \/
+            //  verifica hp do usuario para aplicar cor de perigo
+            if(pokemonUser.vida >=26 && pokemonUser.vida <= 45){
+                barHpUser.style.backgroundColor='orange'
+                hpPokeUser.style.color='orange'
+            }else if(pokemonUser.vida <= 25){
+                barHpUser.style.backgroundColor='red'
+                hpPokeUser.style.color='red'
+              
+                
+             
+            }else{
+                hpPokeUser.style.color='green'
+                barHpUser.style.backgroundColor=''
+
+            }
+
+            // caso vida do usuario menor que zero , finaliza partida\/
 
             if(pokemonUser.vida <= 0){
                 pokemonUser.vida = 0
@@ -534,6 +571,7 @@ window.onload = function inicio(){
 
                 setTimeout(() => {
                     pokeIMG.style.opacity='0'
+                    containerinteracao.style.height='20vh'
                     hpPokeUser.innerHTML=`HP:${pokemonUser.vida}, Seu pokemon foi derrotado!`
                 }, 1000);
                
