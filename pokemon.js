@@ -1,21 +1,21 @@
 let pokemonUser, jogador_a
-let audio = document.getElementById('music')
-let introMusic = new Audio ('./assets/audio/introPKM.mp3')
-let battleMusic = new Audio ('./assets/audio/battle.mp3')
-let efeitoAtk = new Audio ('./assets/audio/ataquePKM2.mp3')
-let efeitoAtk2 = new Audio ('./assets/audio/laserPKM.mp3')
-let efeitoCura = new Audio ('./assets/audio/curaPKM.mp3')
+const audio = document.getElementById('music')
+const introMusic = new Audio ('./assets/audio/introPKM.mp3')
+const battleMusic = new Audio ('./assets/audio/battle.mp3')
+const efeitoAtk = new Audio ('./assets/audio/ataquePKM2.mp3')
+const efeitoAtk2 = new Audio ('./assets/audio/laserPKM.mp3')
+const efeitoCura = new Audio ('./assets/audio/curaPKM.mp3')
 
-let h3 = document.querySelector('h3')
-let h4 = document.querySelector('h4')
-let narracao = document.querySelector('h1')
-let pokeIMG = document.getElementById('pokeIMG')
-let mewIMG = document.getElementById('MewIMG')
-let pokemonJoyce= document.querySelector('.pokemons')
+const h3 = document.querySelector('h3')
+const h4 = document.querySelector('h4')
+const narracao = document.querySelector('h1')
+const pokeIMG = document.getElementById('pokeIMG')
+const mewIMG = document.getElementById('MewIMG')
+const pokemonChoise= document.querySelector('.pokemons')
 
-let sectionEntradaNome = document.querySelector('.entradaNome')
-let sectionPokeballs = document.querySelector('.pokeballs')
-let sectionBattle = document.querySelector('.battle')
+const sectionEntradaNome = document.querySelector('.entradaNome')
+const sectionPokeballs = document.querySelector('.pokeballs')
+const sectionBattle = document.querySelector('.battle')
 let pbottom = document.querySelector('.pbottom')
 let jogarNovamente= document.querySelector('.jogarNovamente')
 
@@ -31,8 +31,6 @@ let btCura = document.querySelector('.cura')
 let barHpMew = document.querySelector('#barHpMew')
 
 let barHpUser = document.querySelector('#barHpUser')
-
-
 
 let containerinteracao = document.querySelector('.interacao')
 let containerPokemonUser = document.querySelector('.containerPokemonUser')
@@ -85,7 +83,7 @@ window.onload = function inicio(){
     
     function pegaIDpokemonUser(){
 
-        pokemonJoyce.addEventListener('click',e =>{
+        pokemonChoise.addEventListener('click',e =>{
             let idPokemonEscolhido= e.target.id
             escolhaPokemon(idPokemonEscolhido)
 
@@ -140,7 +138,6 @@ window.onload = function inicio(){
 
     function mudaParaBatalha (){
         document.body.style.background= 'black'  
-        // document.body.style.background= 'linear-gradient(130.02deg, #62798e 0.66%, #271a55 83.32%)'  
         narracao.style.color='white'
         sectionPokeballs.style.display = 'none'
         sectionBattle.style.display ='block'
@@ -299,7 +296,7 @@ window.onload = function inicio(){
 
 
                      pbottom.innerHTML= `Seu pokemon se curou nessa rodada` 
-                        //  chama ataque do mew
+                        //  chama ataque do mew após cura
                     setTimeout(()=>{
                        
                         vezDoMew()
@@ -604,7 +601,7 @@ window.onload = function inicio(){
 
 
 
-// Pokemons cadastrados
+// Lista de Pokemons cadastrados
 let mew = {
     nome:'MewTwo',
     vida:120,
