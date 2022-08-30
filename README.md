@@ -7,7 +7,7 @@
 Criei esse projeto de jogo para estudar e me desafiar, <br>
 O projeto foi criado com html,css e Javascript.<br>
 O objetivo era testar meus conhecimentos em javascript. <br>
-O projeto inclui:
+O projeto inclui:<br>
 -HTML e CSS<br>
 -Lógica de programação<br>
 -Manipulação do DOM<br>
