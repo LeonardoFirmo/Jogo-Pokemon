@@ -260,7 +260,7 @@ window.onload = function inicio(){
                      atak = false
                      let curaRecebida = cura(pokemonUser)
                      pokemonUser.vida= curaRecebida
-                     hpPokeUser.innerHTML=`HP:${pokemonUser.vida}`
+                     hpPokeUser.innerHTML=`HP:${pokemonUser.vida} / ${pokemonUser.vida} `
 
 
                         
